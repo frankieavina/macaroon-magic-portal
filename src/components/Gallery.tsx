@@ -1,9 +1,31 @@
 
 import { useEffect, useRef, useState } from 'react';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogDescription, 
+  DialogHeader, 
+  DialogTitle,
+  DialogTrigger
+} from "@/components/ui/dialog";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Gallery = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [dialogOpen, setDialogOpen] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,7 +59,7 @@ const Gallery = () => {
     { id: 'signature', name: 'Signature' },
   ];
 
-  // This would be replaced with your actual gallery items
+  // Sample gallery items - shown on the main page
   const galleryItems = [
     { id: 1, category: 'classic', name: 'Vanilla Bean' },
     { id: 2, category: 'classic', name: 'Chocolate' },
@@ -49,9 +71,32 @@ const Gallery = () => {
     { id: 8, category: 'classic', name: 'Salted Caramel' },
   ];
 
+  // Extended gallery items - shown in the modal dialog
+  const extendedGalleryItems = [
+    // Include original items
+    ...galleryItems,
+    // Add more items
+    { id: 9, category: 'classic', name: 'Dark Chocolate' },
+    { id: 10, category: 'classic', name: 'Hazelnut' },
+    { id: 11, category: 'classic', name: 'Coffee' },
+    { id: 12, category: 'seasonal', name: 'Strawberry Basil' },
+    { id: 13, category: 'seasonal', name: 'Apple Cinnamon' },
+    { id: 14, category: 'seasonal', name: 'Peppermint' },
+    { id: 15, category: 'signature', name: 'Earl Grey' },
+    { id: 16, category: 'signature', name: 'Matcha White Chocolate' },
+    { id: 17, category: 'signature', name: 'Passion Fruit' },
+    { id: 18, category: 'signature', name: 'Rose Lychee' },
+    { id: 19, category: 'classic', name: 'Lemon' },
+    { id: 20, category: 'classic', name: 'Red Velvet' },
+  ];
+
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeCategory);
+
+  const filteredExtendedItems = activeCategory === 'all'
+    ? extendedGalleryItems
+    : extendedGalleryItems.filter(item => item.category === activeCategory);
 
   return (
     <section 
@@ -85,7 +130,7 @@ const Gallery = () => {
           ))}
         </div>
         
-        {/* Gallery grid */}
+        {/* Gallery grid - small preview */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredItems.map((item, index) => (
             <div 
@@ -112,13 +157,131 @@ const Gallery = () => {
           ))}
         </div>
         
+        {/* View more button that opens the dialog */}
         <div className="text-center mt-12">
-          <p className="text-macaron-charcoal/70 mb-6">
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogTrigger asChild>
+              <button 
+                className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink hover:text-white transition-colors duration-300"
+              >
+                Explore Full Collection
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-serif text-center text-macaron-darkPink mb-2">Our Complete Macaron Collection</DialogTitle>
+                <DialogDescription className="text-center text-macaron-charcoal/80">
+                  Browse through our full range of delightful flavors and designs
+                </DialogDescription>
+              </DialogHeader>
+              
+              <Tabs defaultValue="gallery" className="mt-4">
+                <TabsList className="grid w-full grid-cols-2 mb-4">
+                  <TabsTrigger value="gallery">Gallery View</TabsTrigger>
+                  <TabsTrigger value="carousel">Carousel View</TabsTrigger>
+                </TabsList>
+                
+                {/* Gallery View Tab */}
+                <TabsContent value="gallery" className="mt-4">
+                  <div className="flex flex-wrap justify-center gap-3 mb-8">
+                    {categories.map(category => (
+                      <button
+                        key={category.id}
+                        onClick={() => setActiveCategory(category.id)}
+                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300
+                          ${activeCategory === category.id 
+                            ? 'bg-macaron-pink text-macaron-charcoal' 
+                            : 'bg-macaron-cream/50 text-macaron-charcoal/70 hover:bg-macaron-cream'}`}
+                      >
+                        {category.name}
+                      </button>
+                    ))}
+                  </div>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {filteredExtendedItems.map((item) => (
+                      <div 
+                        key={item.id}
+                        className="group rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div className="h-40 relative">
+                          {/* Placeholder for macaron image */}
+                          <div className="absolute inset-0 bg-macaron-cream/60 flex items-center justify-center">
+                            <p className="text-macaron-charcoal/50 font-serif text-md">{item.name}</p>
+                          </div>
+                          <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300"></div>
+                        </div>
+                        <div className="p-3 bg-white">
+                          <span className="text-xs uppercase text-macaron-darkPink/70 inline-block">
+                            {categories.find(cat => cat.id === item.category)?.name}
+                          </span>
+                          <h3 className="text-md font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
+                            {item.name}
+                          </h3>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </TabsContent>
+                
+                {/* Carousel View Tab */}
+                <TabsContent value="carousel" className="mt-4">
+                  <Carousel className="w-full max-w-md mx-auto">
+                    <CarouselContent>
+                      {filteredExtendedItems.map((item) => (
+                        <CarouselItem key={item.id}>
+                          <div className="p-1">
+                            <div className="rounded-xl overflow-hidden border border-macaron-pink/20">
+                              <div className="h-64 relative">
+                                {/* Placeholder for macaron image */}
+                                <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
+                                  <p className="text-macaron-charcoal/50 font-serif text-xl">{item.name}</p>
+                                </div>
+                              </div>
+                              <div className="p-4 bg-white">
+                                <span className="text-xs uppercase text-macaron-darkPink/70 mb-1 inline-block">
+                                  {categories.find(cat => cat.id === item.category)?.name}
+                                </span>
+                                <h3 className="text-xl font-serif font-medium text-macaron-charcoal">
+                                  {item.name}
+                                </h3>
+                              </div>
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <div className="flex justify-center mt-4">
+                      <CarouselPrevious className="relative static translate-y-0 -left-0" />
+                      <CarouselNext className="relative static translate-y-0 -right-0" />
+                    </div>
+                  </Carousel>
+                  
+                  <div className="flex flex-wrap justify-center gap-3 mt-8">
+                    {categories.map(category => (
+                      <button
+                        key={category.id}
+                        onClick={() => setActiveCategory(category.id)}
+                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300
+                          ${activeCategory === category.id 
+                            ? 'bg-macaron-pink text-macaron-charcoal' 
+                            : 'bg-macaron-cream/50 text-macaron-charcoal/70 hover:bg-macaron-cream'}`}
+                      >
+                        {category.name}
+                      </button>
+                    ))}
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </DialogContent>
+          </Dialog>
+          
+          <p className="text-macaron-charcoal/70 mt-6">
             Want to see more of our creations or place a custom order?
           </p>
           <a 
             href="#contact" 
-            className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink transition-colors duration-300"
+            className="inline-block px-8 py-3 mt-4 bg-white text-macaron-charcoal font-medium rounded-md hover:bg-macaron-cream transition-colors duration-300"
           >
             Contact Us
           </a>
