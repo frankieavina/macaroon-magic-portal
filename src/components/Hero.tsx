@@ -5,10 +5,13 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    if (heroRef.current) {
-      heroRef.current.classList.add('opacity-100');
-      heroRef.current.classList.remove('opacity-0');
-    }
+    // Make sure the hero section is visible when the page loads
+    setTimeout(() => {
+      if (heroRef.current) {
+        heroRef.current.classList.add('opacity-100');
+        heroRef.current.classList.remove('opacity-0');
+      }
+    }, 100);
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Instagram, Clock } from 'lucide-react';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -74,21 +74,11 @@ const Contact = () => {
               
               <div className="flex items-start space-x-4">
                 <div className="w-10 h-10 rounded-full bg-macaron-softPink flex items-center justify-center flex-shrink-0">
-                  <Phone size={18} className="text-macaron-darkPink" />
+                  <Instagram size={18} className="text-macaron-darkPink" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-macaron-charcoal mb-1">Phone</h4>
-                  <p className="text-macaron-charcoal/70">(555) 123-4567</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-macaron-softPink flex items-center justify-center flex-shrink-0">
-                  <Mail size={18} className="text-macaron-darkPink" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium text-macaron-charcoal mb-1">Email</h4>
-                  <p className="text-macaron-charcoal/70">hello@macspatisserie.com</p>
+                  <h4 className="text-lg font-medium text-macaron-charcoal mb-1">Instagram</h4>
+                  <p className="text-macaron-charcoal/70">@macspatisserie</p>
                 </div>
               </div>
               
@@ -109,10 +99,12 @@ const Contact = () => {
             
             <div className="mt-10">
               <a 
-                href="mailto:hello@macspatisserie.com" 
+                href="https://instagram.com/macspatisserie" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink transition-colors duration-300"
               >
-                Send Us a Message
+                Follow Us on Instagram
               </a>
             </div>
           </div>
