@@ -6,12 +6,10 @@ const Hero = () => {
   
   useEffect(() => {
     // Make sure the hero section is visible when the page loads
-    setTimeout(() => {
-      if (heroRef.current) {
-        heroRef.current.classList.add('opacity-100');
-        heroRef.current.classList.remove('opacity-0');
-      }
-    }, 100);
+    if (heroRef.current) {
+      heroRef.current.classList.add('opacity-100');
+      heroRef.current.classList.remove('opacity-0');
+    }
   }, []);
 
   return (
@@ -27,7 +25,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-macaron-pink/10 blur-3xl"></div>
       <div className="absolute bottom-1/4 right-[10%] w-72 h-72 rounded-full bg-macaron-pink/15 blur-3xl"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6 opacity-0 transition-opacity duration-1000">
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <span className="inline-block px-4 py-1 mb-6 rounded-full bg-macaron-softPink text-macaron-darkPink text-sm font-medium">
             Artisanal French Macarons
