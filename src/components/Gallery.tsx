@@ -1,5 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
 import { 
   Dialog, 
   DialogContent, 
@@ -28,6 +30,7 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [dialogOpen, setDialogOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { isAuthenticated } = useAuth();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,36 +64,53 @@ const Gallery = () => {
     { id: 'signature', name: 'Signature' },
   ];
 
+  // Get gallery items from local storage or use defaults
+  const getGalleryItems = () => {
+    const storedItems = localStorage.getItem('galleryItems');
+    if (storedItems) {
+      return JSON.parse(storedItems);
+    }
+    
+    // Default gallery items
+    return [
+      { id: 1, category: 'classic', name: 'Vanilla Bean' },
+      { id: 2, category: 'classic', name: 'Chocolate' },
+      { id: 3, category: 'seasonal', name: 'Raspberry Rose' },
+      { id: 4, category: 'signature', name: 'Lavender Honey' },
+      { id: 5, category: 'classic', name: 'Pistachio' },
+      { id: 6, category: 'seasonal', name: 'Pumpkin Spice' },
+      { id: 7, category: 'signature', name: 'Champagne' },
+      { id: 8, category: 'classic', name: 'Salted Caramel' },
+    ];
+  };
+
   // Sample gallery items - shown on the main page
-  const galleryItems = [
-    { id: 1, category: 'classic', name: 'Vanilla Bean' },
-    { id: 2, category: 'classic', name: 'Chocolate' },
-    { id: 3, category: 'seasonal', name: 'Raspberry Rose' },
-    { id: 4, category: 'signature', name: 'Lavender Honey' },
-    { id: 5, category: 'classic', name: 'Pistachio' },
-    { id: 6, category: 'seasonal', name: 'Pumpkin Spice' },
-    { id: 7, category: 'signature', name: 'Champagne' },
-    { id: 8, category: 'classic', name: 'Salted Caramel' },
-  ];
+  const galleryItems = getGalleryItems();
 
   // Extended gallery items - shown in the modal dialog
-  const extendedGalleryItems = [
-    // Include original items
-    ...galleryItems,
-    // Add more items
-    { id: 9, category: 'classic', name: 'Dark Chocolate' },
-    { id: 10, category: 'classic', name: 'Hazelnut' },
-    { id: 11, category: 'classic', name: 'Coffee' },
-    { id: 12, category: 'seasonal', name: 'Strawberry Basil' },
-    { id: 13, category: 'seasonal', name: 'Apple Cinnamon' },
-    { id: 14, category: 'seasonal', name: 'Peppermint' },
-    { id: 15, category: 'signature', name: 'Earl Grey' },
-    { id: 16, category: 'signature', name: 'Matcha White Chocolate' },
-    { id: 17, category: 'signature', name: 'Passion Fruit' },
-    { id: 18, category: 'signature', name: 'Rose Lychee' },
-    { id: 19, category: 'classic', name: 'Lemon' },
-    { id: 20, category: 'classic', name: 'Red Velvet' },
-  ];
+  const extendedGalleryItems = (() => {
+    const storedItems = localStorage.getItem('galleryItems');
+    if (storedItems) {
+      return JSON.parse(storedItems);
+    }
+    
+    // Default extended gallery items
+    return [
+      ...galleryItems,
+      { id: 9, category: 'classic', name: 'Dark Chocolate' },
+      { id: 10, category: 'classic', name: 'Hazelnut' },
+      { id: 11, category: 'classic', name: 'Coffee' },
+      { id: 12, category: 'seasonal', name: 'Strawberry Basil' },
+      { id: 13, category: 'seasonal', name: 'Apple Cinnamon' },
+      { id: 14, category: 'seasonal', name: 'Peppermint' },
+      { id: 15, category: 'signature', name: 'Earl Grey' },
+      { id: 16, category: 'signature', name: 'Matcha White Chocolate' },
+      { id: 17, category: 'signature', name: 'Passion Fruit' },
+      { id: 18, category: 'signature', name: 'Rose Lychee' },
+      { id: 19, category: 'classic', name: 'Lemon' },
+      { id: 20, category: 'classic', name: 'Red Velvet' },
+    ];
+  })();
 
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
@@ -143,7 +163,7 @@ const Gallery = () => {
               <div className="h-64 relative">
                 {/* Placeholder for macaron image */}
                 <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-                  <p className="text-macaron-charcoal/50 font-serif text-lg">Macaron photo</p>
+                  <p className="text-macaron-charcoal/50 font-serif text-lg">{item.name}</p>
                 </div>
                 <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300"></div>
               </div>
@@ -327,12 +347,23 @@ const Gallery = () => {
           <p className="text-macaron-charcoal/70 mt-6">
             Want to see more of our creations or place a custom order?
           </p>
-          <a 
-            href="#contact" 
-            className="inline-block px-8 py-3 mt-4 bg-white text-macaron-charcoal font-medium rounded-md hover:bg-macaron-cream transition-colors duration-300"
-          >
-            Contact Us
-          </a>
+          <div className="flex justify-center mt-4 gap-4">
+            <a 
+              href="#contact" 
+              className="inline-block px-8 py-3 bg-white text-macaron-charcoal font-medium rounded-md hover:bg-macaron-cream transition-colors duration-300"
+            >
+              Contact Us
+            </a>
+            
+            {isAuthenticated && (
+              <Link 
+                to="/admin/gallery" 
+                className="inline-block px-8 py-3 bg-macaron-darkPink text-white font-medium rounded-md hover:bg-macaron-darkPink/90 transition-colors duration-300"
+              >
+                Manage Gallery
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -340,4 +371,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
