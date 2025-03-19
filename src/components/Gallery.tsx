@@ -21,11 +21,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Gallery = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [dialogOpen, setDialogOpen] = useState(false);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -175,14 +177,9 @@ const Gallery = () => {
                 </DialogDescription>
               </DialogHeader>
               
-              <Tabs defaultValue="gallery" className="mt-4">
-                <TabsList className="grid w-full grid-cols-2 mb-4">
-                  <TabsTrigger value="gallery">Gallery View</TabsTrigger>
-                  <TabsTrigger value="carousel">Carousel View</TabsTrigger>
-                </TabsList>
-                
-                {/* Gallery View Tab */}
-                <TabsContent value="gallery" className="mt-4">
+              {isMobile ? (
+                // Mobile view - only show gallery view
+                <div className="mt-4">
                   <div className="flex flex-wrap justify-center gap-3 mb-8">
                     {categories.map(category => (
                       <button
@@ -222,57 +219,108 @@ const Gallery = () => {
                       </div>
                     ))}
                   </div>
-                </TabsContent>
-                
-                {/* Carousel View Tab */}
-                <TabsContent value="carousel" className="mt-4">
-                  <Carousel className="w-full max-w-md mx-auto">
-                    <CarouselContent>
+                </div>
+              ) : (
+                // Desktop view - show tabs with both gallery and carousel views
+                <Tabs defaultValue="gallery" className="mt-4">
+                  <TabsList className="grid w-full grid-cols-2 mb-4">
+                    <TabsTrigger value="gallery">Gallery View</TabsTrigger>
+                    <TabsTrigger value="carousel">Carousel View</TabsTrigger>
+                  </TabsList>
+                  
+                  {/* Gallery View Tab */}
+                  <TabsContent value="gallery" className="mt-4">
+                    <div className="flex flex-wrap justify-center gap-3 mb-8">
+                      {categories.map(category => (
+                        <button
+                          key={category.id}
+                          onClick={() => setActiveCategory(category.id)}
+                          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300
+                            ${activeCategory === category.id 
+                              ? 'bg-macaron-pink text-macaron-charcoal' 
+                              : 'bg-macaron-cream/50 text-macaron-charcoal/70 hover:bg-macaron-cream'}`}
+                        >
+                          {category.name}
+                        </button>
+                      ))}
+                    </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {filteredExtendedItems.map((item) => (
-                        <CarouselItem key={item.id}>
-                          <div className="p-1">
-                            <div className="rounded-xl overflow-hidden border border-macaron-pink/20">
-                              <div className="h-64 relative">
-                                {/* Placeholder for macaron image */}
-                                <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-                                  <p className="text-macaron-charcoal/50 font-serif text-xl">{item.name}</p>
+                        <div 
+                          key={item.id}
+                          className="group rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                        >
+                          <div className="h-40 relative">
+                            {/* Placeholder for macaron image */}
+                            <div className="absolute inset-0 bg-macaron-cream/60 flex items-center justify-center">
+                              <p className="text-macaron-charcoal/50 font-serif text-md">{item.name}</p>
+                            </div>
+                            <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300"></div>
+                          </div>
+                          <div className="p-3 bg-white">
+                            <span className="text-xs uppercase text-macaron-darkPink/70 inline-block">
+                              {categories.find(cat => cat.id === item.category)?.name}
+                            </span>
+                            <h3 className="text-md font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
+                              {item.name}
+                            </h3>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  
+                  {/* Carousel View Tab */}
+                  <TabsContent value="carousel" className="mt-4">
+                    <Carousel className="w-full max-w-md mx-auto">
+                      <CarouselContent>
+                        {filteredExtendedItems.map((item) => (
+                          <CarouselItem key={item.id}>
+                            <div className="p-1">
+                              <div className="rounded-xl overflow-hidden border border-macaron-pink/20">
+                                <div className="h-64 relative">
+                                  {/* Placeholder for macaron image */}
+                                  <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
+                                    <p className="text-macaron-charcoal/50 font-serif text-xl">{item.name}</p>
+                                  </div>
+                                </div>
+                                <div className="p-4 bg-white">
+                                  <span className="text-xs uppercase text-macaron-darkPink/70 mb-1 inline-block">
+                                    {categories.find(cat => cat.id === item.category)?.name}
+                                  </span>
+                                  <h3 className="text-xl font-serif font-medium text-macaron-charcoal">
+                                    {item.name}
+                                  </h3>
                                 </div>
                               </div>
-                              <div className="p-4 bg-white">
-                                <span className="text-xs uppercase text-macaron-darkPink/70 mb-1 inline-block">
-                                  {categories.find(cat => cat.id === item.category)?.name}
-                                </span>
-                                <h3 className="text-xl font-serif font-medium text-macaron-charcoal">
-                                  {item.name}
-                                </h3>
-                              </div>
                             </div>
-                          </div>
-                        </CarouselItem>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <div className="flex justify-center mt-4">
+                        <CarouselPrevious className="relative static translate-y-0 -left-0" />
+                        <CarouselNext className="relative static translate-y-0 -right-0" />
+                      </div>
+                    </Carousel>
+                    
+                    <div className="flex flex-wrap justify-center gap-3 mt-8">
+                      {categories.map(category => (
+                        <button
+                          key={category.id}
+                          onClick={() => setActiveCategory(category.id)}
+                          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300
+                            ${activeCategory === category.id 
+                              ? 'bg-macaron-pink text-macaron-charcoal' 
+                              : 'bg-macaron-cream/50 text-macaron-charcoal/70 hover:bg-macaron-cream'}`}
+                        >
+                          {category.name}
+                        </button>
                       ))}
-                    </CarouselContent>
-                    <div className="flex justify-center mt-4">
-                      <CarouselPrevious className="relative static translate-y-0 -left-0" />
-                      <CarouselNext className="relative static translate-y-0 -right-0" />
                     </div>
-                  </Carousel>
-                  
-                  <div className="flex flex-wrap justify-center gap-3 mt-8">
-                    {categories.map(category => (
-                      <button
-                        key={category.id}
-                        onClick={() => setActiveCategory(category.id)}
-                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300
-                          ${activeCategory === category.id 
-                            ? 'bg-macaron-pink text-macaron-charcoal' 
-                            : 'bg-macaron-cream/50 text-macaron-charcoal/70 hover:bg-macaron-cream'}`}
-                      >
-                        {category.name}
-                      </button>
-                    ))}
-                  </div>
-                </TabsContent>
-              </Tabs>
+                  </TabsContent>
+                </Tabs>
+              )}
             </DialogContent>
           </Dialog>
           
@@ -292,3 +340,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
