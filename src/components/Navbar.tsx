@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <a href="#home" className="flex items-center">
           <h1 className="text-2xl md:text-3xl font-serif font-medium tracking-tight text-macaron-charcoal">
-            MACS<span className="text-macaron-pink">.</span>
+            MACS<span className="text-macaron-pink">.</span> <span className="text-xs font-light tracking-normal hidden sm:inline-block">Patterson, CA</span>
           </h1>
         </a>
 
@@ -50,6 +50,15 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <a 
+              href="/login"
+              className="text-macaron-pink text-sm font-medium hover:text-macaron-darkPink transition-colors duration-300"
+              aria-label="Admin login"
+            >
+              Admin
+            </a>
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -77,6 +86,15 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            <li>
+              <a 
+                href="/login"
+                className="block py-3 px-8 text-macaron-pink hover:bg-macaron-softPink transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Admin
+              </a>
+            </li>
           </ul>
         </div>
       )}

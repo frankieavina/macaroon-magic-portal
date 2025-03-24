@@ -28,14 +28,14 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <span className="inline-block px-4 py-1 mb-6 rounded-full bg-macaron-softPink text-macaron-darkPink text-sm font-medium">
-            Artisanal Desserts & French Macarons
+            Artisanal Desserts & French Macarons in Patterson, CA
           </span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-macaron-charcoal mb-6 leading-tight">
             A Taste of <br />
             <span className="text-macaron-pink">Sweet</span> Elegance
           </h1>
           <p className="text-lg text-macaron-charcoal/70 mb-8 max-w-lg mx-auto md:mx-0">
-            Delicate, handcrafted desserts made with the finest ingredients - from signature macarons to cakes, cookies, cake pops and more for your special moments.
+            Delicate, handcrafted desserts made with the finest ingredients in Patterson, CA. Enjoy our signature macarons, cakes, cookies, cake pops, chocolate-covered pretzels and more for your special moments. Serving the 209 area with love in every bite.
           </p>
           <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
             <a 

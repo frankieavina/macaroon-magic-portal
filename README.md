@@ -1,69 +1,52 @@
-# Welcome to your Lovable project
 
-## Project info
+# Macaron Magic Portal
 
-**URL**: https://lovable.dev/projects/3811d11c-eba8-4461-a06f-6851447cdb28
+## Dessert Patisserie Website
 
-## How can I edit this code?
+This project is a beautiful, responsive website for a dessert patisserie specializing in French macarons and other delightful treats including cakes, cookies, cake pops, chocolate-covered pretzels, and more. The website showcases our artisanal desserts, provides information about our offerings, and allows customers to contact us for orders.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- **Elegant Design**: Beautiful, responsive design with soft pastel colors that reflect the delicate nature of our desserts
+- **Product Showcase**: Gallery featuring our macarons, cakes, and specialty desserts
+- **About Section**: Information about our patisserie and our commitment to quality
+- **Contact Information**: Easy ways for customers to reach us and place orders
+- **Admin Gallery Management**: Secure admin area to manage product photos
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3811d11c-eba8-4461-a06f-6851447cdb28) and start prompting.
+## Location & Service Area
 
-Changes made via Lovable will be committed automatically to this repo.
+We proudly serve Patterson, CA and the surrounding 209 area code region, offering both pickup and local delivery options for our artisanal desserts.
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+To view or edit this project:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Install dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Technologies Used
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
 - Tailwind CSS
+- shadcn-ui components
+- Vite
 
-## How can I deploy this project?
+## Admin Access
 
-Simply open [Lovable](https://lovable.dev/projects/3811d11c-eba8-4461-a06f-6851447cdb28) and click on Share -> Publish.
+The site includes an admin area for gallery management, accessible at `/login` with appropriate credentials.
 
-## I want to use a custom domain - is that possible?
+## Deployment
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This site can be easily deployed through Lovable's publishing feature or via services like Netlify for custom domain usage.
