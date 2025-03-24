@@ -58,10 +58,11 @@ const Gallery = () => {
   }, []);
 
   const categories = [
-    { id: 'all', name: 'All Flavors' },
-    { id: 'classic', name: 'Classic' },
-    { id: 'seasonal', name: 'Seasonal' },
-    { id: 'signature', name: 'Signature' },
+    { id: 'all', name: 'All Desserts' },
+    { id: 'macarons', name: 'Macarons' },
+    { id: 'cakes', name: 'Cakes' },
+    { id: 'cookies', name: 'Cookies' },
+    { id: 'specialty', name: 'Specialty' },
   ];
 
   // Get gallery items from local storage or use defaults
@@ -71,16 +72,16 @@ const Gallery = () => {
       return JSON.parse(storedItems);
     }
     
-    // Default gallery items
+    // Default gallery items with expanded dessert options
     return [
-      { id: 1, category: 'classic', name: 'Vanilla Bean' },
-      { id: 2, category: 'classic', name: 'Chocolate' },
-      { id: 3, category: 'seasonal', name: 'Raspberry Rose' },
-      { id: 4, category: 'signature', name: 'Lavender Honey' },
-      { id: 5, category: 'classic', name: 'Pistachio' },
-      { id: 6, category: 'seasonal', name: 'Pumpkin Spice' },
-      { id: 7, category: 'signature', name: 'Champagne' },
-      { id: 8, category: 'classic', name: 'Salted Caramel' },
+      { id: 1, category: 'macarons', name: 'Vanilla Bean Macaron' },
+      { id: 2, category: 'macarons', name: 'Chocolate Macaron' },
+      { id: 3, category: 'cakes', name: 'Classic Cheesecake' },
+      { id: 4, category: 'cookies', name: 'Chocolate Chip Cookies' },
+      { id: 5, category: 'specialty', name: 'Chocolate Covered Pretzels' },
+      { id: 6, category: 'cakes', name: 'Red Velvet Cake' },
+      { id: 7, category: 'specialty', name: 'Cake Pops' },
+      { id: 8, category: 'specialty', name: 'Classic Flan' },
     ];
   };
 
@@ -94,21 +95,21 @@ const Gallery = () => {
       return JSON.parse(storedItems);
     }
     
-    // Default extended gallery items
+    // Default extended gallery items with more dessert variety
     return [
       ...galleryItems,
-      { id: 9, category: 'classic', name: 'Dark Chocolate' },
-      { id: 10, category: 'classic', name: 'Hazelnut' },
-      { id: 11, category: 'classic', name: 'Coffee' },
-      { id: 12, category: 'seasonal', name: 'Strawberry Basil' },
-      { id: 13, category: 'seasonal', name: 'Apple Cinnamon' },
-      { id: 14, category: 'seasonal', name: 'Peppermint' },
-      { id: 15, category: 'signature', name: 'Earl Grey' },
-      { id: 16, category: 'signature', name: 'Matcha White Chocolate' },
-      { id: 17, category: 'signature', name: 'Passion Fruit' },
-      { id: 18, category: 'signature', name: 'Rose Lychee' },
-      { id: 19, category: 'classic', name: 'Lemon' },
-      { id: 20, category: 'classic', name: 'Red Velvet' },
+      { id: 9, category: 'macarons', name: 'Raspberry Macaron' },
+      { id: 10, category: 'macarons', name: 'Pistachio Macaron' },
+      { id: 11, category: 'macarons', name: 'Coffee Macaron' },
+      { id: 12, category: 'cakes', name: 'Strawberry Shortcake' },
+      { id: 13, category: 'cakes', name: 'German Chocolate Cake' },
+      { id: 14, category: 'cakes', name: 'Carrot Cake' },
+      { id: 15, category: 'cookies', name: 'Sugar Cookies' },
+      { id: 16, category: 'cookies', name: 'Snickerdoodles' },
+      { id: 17, category: 'cookies', name: 'Oatmeal Raisin Cookies' },
+      { id: 18, category: 'specialty', name: 'Chocolate Mousse' },
+      { id: 19, category: 'specialty', name: 'Fruit Tarts' },
+      { id: 20, category: 'specialty', name: 'Chocolate Truffles' },
     ];
   })();
 
@@ -130,10 +131,10 @@ const Gallery = () => {
         className="max-w-7xl mx-auto opacity-0 translate-y-10 transition-all duration-1000"
       >
         <span className="block text-center text-sm text-macaron-darkPink font-medium mb-4">OUR CREATIONS</span>
-        <h2 className="section-title text-center">Macaron Gallery</h2>
+        <h2 className="section-title text-center">Dessert Gallery</h2>
         <p className="section-subtitle text-center">
-          Explore our collection of exquisite macarons, each one a perfect blend of crispy shells, 
-          soft centers, and unforgettable flavors.
+          Explore our collection of exquisite desserts, from signature macarons to cakes, cookies, 
+          and specialty treats - each crafted with care and the finest ingredients.
         </p>
         
         {/* Category filter */}
@@ -161,7 +162,7 @@ const Gallery = () => {
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               <div className="h-64 relative">
-                {/* Placeholder for macaron image */}
+                {/* Placeholder for dessert image */}
                 <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
                   <p className="text-macaron-charcoal/50 font-serif text-lg">{item.name}</p>
                 </div>
@@ -169,7 +170,7 @@ const Gallery = () => {
               </div>
               <div className="p-6">
                 <span className="text-xs uppercase text-macaron-darkPink/70 mb-2 inline-block">
-                  {categories.find(cat => cat.id === item.category)?.name}
+                  {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
                 </span>
                 <h3 className="text-xl font-serif font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
                   {item.name}
@@ -191,9 +192,9 @@ const Gallery = () => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-serif text-center text-macaron-darkPink mb-2">Our Complete Macaron Collection</DialogTitle>
+                <DialogTitle className="text-2xl font-serif text-center text-macaron-darkPink mb-2">Our Complete Dessert Collection</DialogTitle>
                 <DialogDescription className="text-center text-macaron-charcoal/80">
-                  Browse through our full range of delightful flavors and designs
+                  Browse through our full range of delightful desserts and sweet creations
                 </DialogDescription>
               </DialogHeader>
               
@@ -222,7 +223,7 @@ const Gallery = () => {
                         className="group rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
                       >
                         <div className="h-40 relative">
-                          {/* Placeholder for macaron image */}
+                          {/* Placeholder for dessert image */}
                           <div className="absolute inset-0 bg-macaron-cream/60 flex items-center justify-center">
                             <p className="text-macaron-charcoal/50 font-serif text-md">{item.name}</p>
                           </div>
@@ -230,7 +231,7 @@ const Gallery = () => {
                         </div>
                         <div className="p-3 bg-white">
                           <span className="text-xs uppercase text-macaron-darkPink/70 inline-block">
-                            {categories.find(cat => cat.id === item.category)?.name}
+                            {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
                           </span>
                           <h3 className="text-md font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
                             {item.name}
@@ -272,7 +273,7 @@ const Gallery = () => {
                           className="group rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
                         >
                           <div className="h-40 relative">
-                            {/* Placeholder for macaron image */}
+                            {/* Placeholder for dessert image */}
                             <div className="absolute inset-0 bg-macaron-cream/60 flex items-center justify-center">
                               <p className="text-macaron-charcoal/50 font-serif text-md">{item.name}</p>
                             </div>
@@ -280,7 +281,7 @@ const Gallery = () => {
                           </div>
                           <div className="p-3 bg-white">
                             <span className="text-xs uppercase text-macaron-darkPink/70 inline-block">
-                              {categories.find(cat => cat.id === item.category)?.name}
+                              {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
                             </span>
                             <h3 className="text-md font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
                               {item.name}
@@ -300,14 +301,14 @@ const Gallery = () => {
                             <div className="p-1">
                               <div className="rounded-xl overflow-hidden border border-macaron-pink/20">
                                 <div className="h-64 relative">
-                                  {/* Placeholder for macaron image */}
+                                  {/* Placeholder for dessert image */}
                                   <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
                                     <p className="text-macaron-charcoal/50 font-serif text-xl">{item.name}</p>
                                   </div>
                                 </div>
                                 <div className="p-4 bg-white">
                                   <span className="text-xs uppercase text-macaron-darkPink/70 mb-1 inline-block">
-                                    {categories.find(cat => cat.id === item.category)?.name}
+                                    {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
                                   </span>
                                   <h3 className="text-xl font-serif font-medium text-macaron-charcoal">
                                     {item.name}

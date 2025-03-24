@@ -28,22 +28,21 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <span className="inline-block px-4 py-1 mb-6 rounded-full bg-macaron-softPink text-macaron-darkPink text-sm font-medium">
-            Artisanal French Macarons
+            Artisanal Desserts & French Macarons
           </span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-macaron-charcoal mb-6 leading-tight">
             A Taste of <br />
-            <span className="text-macaron-pink">French</span> Elegance
+            <span className="text-macaron-pink">Sweet</span> Elegance
           </h1>
           <p className="text-lg text-macaron-charcoal/70 mb-8 max-w-lg mx-auto md:mx-0">
-            Delicate, handcrafted macarons made with the finest ingredients, bringing
-            a touch of Parisian luxury to your special moments.
+            Delicate, handcrafted desserts made with the finest ingredients - from signature macarons to cakes, cookies, cake pops and more for your special moments.
           </p>
           <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
             <a 
               href="#gallery" 
               className="px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink transition-colors duration-300"
             >
-              Explore Our Flavors
+              Explore Our Desserts
             </a>
             <a 
               href="#contact" 
@@ -57,7 +56,7 @@ const Hero = () => {
         <div className="w-full md:w-1/2 h-72 md:h-96 rounded-2xl overflow-hidden relative">
           {/* Placeholder for hero image */}
           <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-            <p className="text-macaron-charcoal/50 font-serif text-lg">Your macaron hero image here</p>
+            <p className="text-macaron-charcoal/50 font-serif text-lg">Your dessert showcase image here</p>
           </div>
           <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
         </div>
