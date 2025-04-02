@@ -1,5 +1,6 @@
 
 import { useEffect, useRef } from 'react';
+import { Instagram, Facebook } from 'lucide-react';
 
 const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -79,25 +80,46 @@ const About = () => {
         </div>
         
         <div className="mt-20 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-1/2 h-80 rounded-2xl overflow-hidden relative">
-            {/* Placeholder for about image */}
-            <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-              <p className="text-macaron-charcoal/50 font-serif text-lg">Your baker image here</p>
-            </div>
+          <div className="w-full md:w-1/2 h-80 md:h-96 rounded-2xl overflow-hidden relative">
+            <img 
+              src="/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png" 
+              alt="Guadalupe Gallardo, Owner of MACS" 
+              className="w-full h-full object-cover"
+            />
             <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
           </div>
           
           <div className="w-full md:w-1/2">
-            <h3 className="text-2xl md:text-3xl font-serif font-medium text-macaron-charcoal mb-6">Meet Our Master Baker</h3>
+            <h3 className="text-2xl md:text-3xl font-serif font-medium text-macaron-charcoal mb-6">Meet Guadalupe Gallardo</h3>
             <p className="text-macaron-charcoal/70 mb-6">
-              With a passion for French patisserie and over 15 years of experience, our head baker brings authentic 
-              techniques and innovative flavors to create macarons that are both visually stunning and deliciously 
-              unforgettable.
+              "Hello everyone! I'm the face behind MACS. I started baking macarons in 2020 after my niece wanted some for her birthday party. We couldn't find macarons anywhere at the time so I decided to bake some.
             </p>
-            <p className="text-macaron-charcoal/70">
-              Every macaron at MACS is crafted with love, precision, and a commitment to excellence that 
-              has made us a beloved destination for macaron enthusiasts.
+            <p className="text-macaron-charcoal/70 mb-6">
+              It took me a while to finally get them just right. At the time, I only baked them occasionally to relieve stress, since it's a long process to make them. If you aren't aware it takes approximately 24 hours+ to make macarons!
             </p>
+            <p className="text-macaron-charcoal/70 mb-6">
+              I never really thought to sell macarons until this year, thanks to my brother. He really pushed me to it. My family is amazing at encouraging me too! They love tasting my macarons and don't let me give up."
+            </p>
+            <div className="flex items-center gap-4 mt-6">
+              <a 
+                href="https://www.instagram.com/themacshop209/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-macaron-softPink hover:bg-macaron-pink transition-colors duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-6 w-6 text-macaron-charcoal" />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61574711577534" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-macaron-softPink hover:bg-macaron-pink transition-colors duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-6 w-6 text-macaron-charcoal" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

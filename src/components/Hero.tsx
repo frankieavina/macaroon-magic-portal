@@ -54,9 +54,9 @@ const Hero = () => {
         </div>
         
         <div className="w-full md:w-1/2 h-72 md:h-96 rounded-2xl overflow-hidden relative">
-          {/* Placeholder for hero image */}
+          {/* Replace placeholder with a showcase image of MACS desserts */}
           <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-            <p className="text-macaron-charcoal/50 font-serif text-lg">Your dessert showcase image here</p>
+            <p className="text-macaron-charcoal/50 font-serif text-lg">Delicious macarons and specialty desserts</p>
           </div>
           <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
         </div>
