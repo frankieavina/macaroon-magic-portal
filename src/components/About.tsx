@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Instagram, Facebook } from 'lucide-react';
 
@@ -109,7 +110,7 @@ const About = () => {
                 <Instagram className="h-6 w-6 text-macaron-charcoal" />
               </a>
               <a 
-                href="https://www.facebook.com/themacshop209" 
+                href="https://www.facebook.com/profile.php?id=61574711577534" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-macaron-softPink hover:bg-macaron-pink transition-colors duration-300"
