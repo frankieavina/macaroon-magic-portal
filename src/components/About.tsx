@@ -1,5 +1,4 @@
-
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Instagram, Facebook } from 'lucide-react';
 
 const About = () => {
@@ -35,7 +34,6 @@ const About = () => {
       id="about" 
       className="py-20 md:py-32 px-6 md:px-10 bg-white relative overflow-hidden"
     >
-      {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-macaron-softPink/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-macaron-softPink/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
       
@@ -111,7 +109,7 @@ const About = () => {
                 <Instagram className="h-6 w-6 text-macaron-charcoal" />
               </a>
               <a 
-                href="https://www.facebook.com/profile.php?id=61574711577534" 
+                href="https://www.facebook.com/themacshop209" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-macaron-softPink hover:bg-macaron-pink transition-colors duration-300"

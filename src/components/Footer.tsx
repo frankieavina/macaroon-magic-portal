@@ -14,14 +14,14 @@ const Footer = () => {
           
           <div className="flex space-x-4">
             <a 
-              href="#" 
+              href="https://www.instagram.com/themacshop209/" 
               className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-macaron-pink transition-colors duration-300"
               aria-label="Instagram"
             >
               <Instagram size={18} className="text-macaron-charcoal" />
             </a>
             <a 
-              href="#" 
+              href="https://www.facebook.com/themacshop209" 
               className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-macaron-pink transition-colors duration-300"
               aria-label="Facebook"
             >

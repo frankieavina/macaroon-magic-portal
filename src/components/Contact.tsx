@@ -1,6 +1,5 @@
-
-import { useEffect, useRef } from 'react';
-import { Home, Instagram, Mail } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Home, Instagram, Facebook, Mail } from 'lucide-react';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -35,7 +34,6 @@ const Contact = () => {
       id="contact" 
       className="py-20 md:py-32 px-6 md:px-10 bg-white relative"
     >
-      {/* Decorative elements */}
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-macaron-softPink/30 rounded-full blur-3xl translate-y-1/3 translate-x-1/3"></div>
       
       <div 
@@ -58,12 +56,12 @@ const Contact = () => {
                 and get notified about special flavors and seasonal offerings.
               </p>
               <a 
-                href="https://instagram.com/macspatisserie" 
+                href="https://www.instagram.com/themacshop209" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink transition-colors duration-300"
               >
-                @macspatisserie
+                @themacshop209
               </a>
             </div>
           </div>
