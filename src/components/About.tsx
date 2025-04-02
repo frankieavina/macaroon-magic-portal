@@ -80,11 +80,11 @@ const About = () => {
         </div>
         
         <div className="mt-20 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-1/2 h-80 md:h-96 rounded-2xl overflow-hidden relative">
+          <div className="w-full md:w-1/2 overflow-hidden rounded-2xl relative">
             <img 
-              src="/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png" 
+              src="/lovable-uploads/b9dbc60a-04fe-4e9a-bc02-55d9a5621ead.png" 
               alt="Guadalupe Gallardo, Owner of MACS" 
-              className="w-full h-full object-cover"
+              className="w-full object-contain"
             />
             <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
           </div>
