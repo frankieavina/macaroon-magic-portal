@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Instagram, Facebook } from 'lucide-react';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -80,11 +81,13 @@ const About = () => {
         
         <div className="mt-20 flex flex-col md:flex-row items-center gap-10">
           <div className="w-full md:w-1/2 overflow-hidden rounded-2xl relative">
-            <img 
-              src="/lovable-uploads/b9dbc60a-04fe-4e9a-bc02-55d9a5621ead.png" 
-              alt="Guadalupe Gallardo, Owner of MACS" 
-              className="w-full object-contain"
-            />
+            <AspectRatio ratio={3/4} className="bg-white">
+              <img 
+                src="/lovable-uploads/b9dbc60a-04fe-4e9a-bc02-55d9a5621ead.png" 
+                alt="Guadalupe Gallardo, Owner of MACS" 
+                className="w-full h-full object-contain"
+              />
+            </AspectRatio>
             <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
           </div>
           

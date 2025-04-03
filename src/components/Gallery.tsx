@@ -24,6 +24,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Gallery = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -65,53 +66,86 @@ const Gallery = () => {
     { id: 'specialty', name: 'Specialty' },
   ];
 
-  // Get gallery items from local storage or use defaults
-  const getGalleryItems = () => {
-    const storedItems = localStorage.getItem('galleryItems');
-    if (storedItems) {
-      return JSON.parse(storedItems);
-    }
-    
-    // Default gallery items with expanded dessert options
-    return [
-      { id: 1, category: 'macarons', name: 'Vanilla Bean Macaron' },
-      { id: 2, category: 'macarons', name: 'Chocolate Macaron' },
-      { id: 3, category: 'cakes', name: 'Classic Cheesecake' },
-      { id: 4, category: 'cookies', name: 'Chocolate Chip Cookies' },
-      { id: 5, category: 'specialty', name: 'Chocolate Covered Pretzels' },
-      { id: 6, category: 'cakes', name: 'Red Velvet Cake' },
-      { id: 7, category: 'specialty', name: 'Cake Pops' },
-      { id: 8, category: 'specialty', name: 'Classic Flan' },
-    ];
-  };
+  // Gallery items with real images
+  const galleryItems = [
+    { 
+      id: 1, 
+      category: 'macarons', 
+      name: 'Colorful Macaron Collection',
+      image: '/lovable-uploads/413295bf-42f8-4418-8d58-770ec8f9be4f.png'
+    },
+    { 
+      id: 2, 
+      category: 'macarons', 
+      name: 'Disney Character Macarons',
+      image: '/lovable-uploads/367c24f8-fb3f-4b17-bf3c-732e9024f2f2.png'
+    },
+    { 
+      id: 3, 
+      category: 'cookies', 
+      name: 'Cinco de Mayo Cookies',
+      image: '/lovable-uploads/ea4e4f5d-0e50-4693-b585-149f7cbaf181.png'
+    },
+    { 
+      id: 4, 
+      category: 'macarons', 
+      name: 'Alice in Wonderland Macaron Tower',
+      image: '/lovable-uploads/48a52d1b-92b9-45d6-b2cc-bdeacf392d9b.png'
+    },
+  ];
 
-  // Sample gallery items - shown on the main page
-  const galleryItems = getGalleryItems();
-
-  // Extended gallery items - shown in the modal dialog
-  const extendedGalleryItems = (() => {
-    const storedItems = localStorage.getItem('galleryItems');
-    if (storedItems) {
-      return JSON.parse(storedItems);
-    }
-    
-    // Default extended gallery items with more dessert variety
-    return [
-      ...galleryItems,
-      { id: 9, category: 'macarons', name: 'Raspberry Macaron' },
-      { id: 10, category: 'macarons', name: 'Pistachio Macaron' },
-      { id: 11, category: 'macarons', name: 'Coffee Macaron' },
-      { id: 12, category: 'cakes', name: 'Strawberry Shortcake' },
-      { id: 13, category: 'cakes', name: 'German Chocolate Cake' },
-      { id: 14, category: 'cakes', name: 'Carrot Cake' },
-      { id: 15, category: 'cookies', name: 'Sugar Cookies' },
-      { id: 16, category: 'cookies', name: 'Snickerdoodles' },
-      { id: 17, category: 'cookies', name: 'Oatmeal Raisin Cookies' },
-      { id: 18, category: 'specialty', name: 'Chocolate Mousse' },
-      { id: 19, category: 'specialty', name: 'Fruit Tarts' },
-      { id: 20, category: 'specialty', name: 'Chocolate Truffles' },
-    ];
-  })();
+  // Extended gallery items with more dessert variety
+  const extendedGalleryItems = [
+    ...galleryItems,
+    { 
+      id: 5, 
+      category: 'specialty', 
+      name: 'Virgin de Guadalupe Cookie',
+      image: '/lovable-uploads/69814750-0c4b-4251-ac93-4fc265befe1c.png'
+    },
+    { 
+      id: 6, 
+      category: 'macarons', 
+      name: 'Fall Themed Macaron Box',
+      image: '/lovable-uploads/632388ef-e413-4619-8214-782234b63309.png'
+    },
+    { 
+      id: 7, 
+      category: 'specialty', 
+      name: 'Halloween Themed Macarons',
+      image: '/lovable-uploads/69a27dd9-b4bb-455d-aba5-7c09c7bba055.png'
+    },
+    { 
+      id: 8, 
+      category: 'specialty', 
+      name: 'Valentine Dessert Collection',
+      image: '/lovable-uploads/43b3ad58-5053-4a27-8ade-9a42302528e9.png'
+    },
+    { 
+      id: 9, 
+      category: 'macarons', 
+      name: 'Hello Kitty Macaron Tower',
+      image: '/lovable-uploads/33ed598c-57c7-4b26-86e0-dcc8eb512a97.png'
+    },
+    { 
+      id: 10, 
+      category: 'macarons', 
+      name: 'Classic Macaron Tower',
+      image: '/lovable-uploads/2f347bd4-48cb-4d06-8a4d-d60903140257.png'
+    },
+    { 
+      id: 11, 
+      category: 'macarons', 
+      name: 'Colorful Macaron Varieties',
+      image: '/lovable-uploads/61c16dee-97e2-4adb-9bb2-56dca299fb4a.png'
+    },
+    { 
+      id: 12, 
+      category: 'macarons', 
+      name: 'Ghost and Special Occasion Macarons',
+      image: '/lovable-uploads/ad5bab58-33af-48fd-90d6-856380fcfbd3.png'
+    },
+  ];
 
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
@@ -161,12 +195,20 @@ const Gallery = () => {
               className="group glass-card rounded-xl overflow-hidden hover:shadow-lg transition-all duration-500"
               style={{ transitionDelay: `${index * 50}ms` }}
             >
-              <div className="h-64 relative">
-                {/* Placeholder for dessert image */}
-                <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-                  <p className="text-macaron-charcoal/50 font-serif text-lg">{item.name}</p>
+              <div className="relative">
+                <AspectRatio ratio={1/1}>
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="p-4 text-white w-full">
+                    <h3 className="text-lg font-medium">{item.name}</h3>
+                  </div>
                 </div>
-                <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300"></div>
+                <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300 rounded-t-xl"></div>
               </div>
               <div className="p-6">
                 <span className="text-xs uppercase text-macaron-darkPink/70 mb-2 inline-block">
@@ -222,10 +264,18 @@ const Gallery = () => {
                         key={item.id}
                         className="group rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
                       >
-                        <div className="h-40 relative">
-                          {/* Placeholder for dessert image */}
-                          <div className="absolute inset-0 bg-macaron-cream/60 flex items-center justify-center">
-                            <p className="text-macaron-charcoal/50 font-serif text-md">{item.name}</p>
+                        <div className="relative">
+                          <AspectRatio ratio={1/1}>
+                            <img 
+                              src={item.image} 
+                              alt={item.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </AspectRatio>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div className="p-3 text-white w-full">
+                              <h3 className="text-sm font-medium">{item.name}</h3>
+                            </div>
                           </div>
                           <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300"></div>
                         </div>
@@ -272,10 +322,18 @@ const Gallery = () => {
                           key={item.id}
                           className="group rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
                         >
-                          <div className="h-40 relative">
-                            {/* Placeholder for dessert image */}
-                            <div className="absolute inset-0 bg-macaron-cream/60 flex items-center justify-center">
-                              <p className="text-macaron-charcoal/50 font-serif text-md">{item.name}</p>
+                          <div className="relative">
+                            <AspectRatio ratio={1/1}>
+                              <img 
+                                src={item.image} 
+                                alt={item.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </AspectRatio>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                              <div className="p-3 text-white w-full">
+                                <h3 className="text-sm font-medium">{item.name}</h3>
+                              </div>
                             </div>
                             <div className="absolute inset-0 border border-macaron-pink/20 group-hover:border-macaron-pink/40 transition-colors duration-300"></div>
                           </div>
@@ -300,12 +358,13 @@ const Gallery = () => {
                           <CarouselItem key={item.id}>
                             <div className="p-1">
                               <div className="rounded-xl overflow-hidden border border-macaron-pink/20">
-                                <div className="h-64 relative">
-                                  {/* Placeholder for dessert image */}
-                                  <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-                                    <p className="text-macaron-charcoal/50 font-serif text-xl">{item.name}</p>
-                                  </div>
-                                </div>
+                                <AspectRatio ratio={1/1}>
+                                  <img 
+                                    src={item.image} 
+                                    alt={item.name}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </AspectRatio>
                                 <div className="p-4 bg-white">
                                   <span className="text-xs uppercase text-macaron-darkPink/70 mb-1 inline-block">
                                     {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}

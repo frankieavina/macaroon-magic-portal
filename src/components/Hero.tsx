@@ -1,5 +1,6 @@
 
 import { useEffect, useRef } from 'react';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -53,12 +54,15 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="w-full md:w-1/2 h-72 md:h-96 rounded-2xl overflow-hidden relative">
-          {/* Replace placeholder with a showcase image of MACS desserts */}
-          <div className="absolute inset-0 bg-macaron-cream/80 flex items-center justify-center">
-            <p className="text-macaron-charcoal/50 font-serif text-lg">Delicious macarons and specialty desserts</p>
-          </div>
-          <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
+        <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-lg relative">
+          <AspectRatio ratio={1/1} className="bg-white">
+            <img 
+              src="/lovable-uploads/413295bf-42f8-4418-8d58-770ec8f9be4f.png" 
+              alt="Colorful macarons, cookies, and treats in a dessert box" 
+              className="object-cover w-full h-full rounded-2xl"
+            />
+            <div className="absolute inset-0 border border-macaron-pink/20 rounded-2xl"></div>
+          </AspectRatio>
         </div>
       </div>
     </section>
