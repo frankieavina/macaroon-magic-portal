@@ -69,7 +69,7 @@ const getStoredGalleryItems = () => {
 type GalleryItem = {
   id: number;
   name: string;
-  category: 'classic' | 'seasonal' | 'signature';
+  category: 'classic' | 'seasonal' | 'signature' | 'specialty';
 };
 
 const AdminGallery = () => {
@@ -213,7 +213,7 @@ const AdminGallery = () => {
                   <Label htmlFor="new-category">Category</Label>
                   <Select 
                     value={newItem.category} 
-                    onValueChange={(value: 'classic' | 'seasonal' | 'signature') => 
+                    onValueChange={(value: 'classic' | 'seasonal' | 'signature' | 'specialty') => 
                       setNewItem({...newItem, category: value})
                     }
                   >
@@ -224,6 +224,7 @@ const AdminGallery = () => {
                       <SelectItem value="classic">Classic</SelectItem>
                       <SelectItem value="seasonal">Seasonal</SelectItem>
                       <SelectItem value="signature">Signature</SelectItem>
+                      <SelectItem value="specialty">Specialty</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -318,7 +319,7 @@ const AdminGallery = () => {
                 <Label htmlFor="edit-category">Category</Label>
                 <Select 
                   value={currentItem.category} 
-                  onValueChange={(value: 'classic' | 'seasonal' | 'signature') => 
+                  onValueChange={(value: 'classic' | 'seasonal' | 'signature' | 'specialty') => 
                     setCurrentItem({...currentItem, category: value})
                   }
                 >
@@ -329,6 +330,7 @@ const AdminGallery = () => {
                     <SelectItem value="classic">Classic</SelectItem>
                     <SelectItem value="seasonal">Seasonal</SelectItem>
                     <SelectItem value="signature">Signature</SelectItem>
+                    <SelectItem value="specialty">Specialty</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -69,26 +70,26 @@ const Gallery = () => {
     { 
       id: 1, 
       category: 'macarons', 
-      name: 'Colorful Macaron Collection',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      name: 'St. Patrick\'s Day Treats',
+      image: '/lovable-uploads/8e31f798-dfe5-4590-a06e-a972459cf8a7.png'
     },
     { 
       id: 2, 
       category: 'macarons', 
-      name: 'Disney Character Macarons',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      name: 'Disney Minnie Macarons',
+      image: '/lovable-uploads/705f3dbd-c803-4517-9c22-a75ffae584f2.png'
     },
     { 
       id: 3, 
       category: 'cookies', 
-      name: 'Cinco de Mayo Cookies',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      name: 'Cinco de Mayo Cookie Collection',
+      image: '/lovable-uploads/957b48fc-00b1-40a3-bc81-c679dbfb370b.png'
     },
     { 
       id: 4, 
       category: 'macarons', 
-      name: 'Alice in Wonderland Macaron Tower',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      name: 'Alice in Wonderland Tower',
+      image: '/lovable-uploads/bb9b290b-e731-47e7-ae5d-e63d65414785.png'
     },
   ];
 
@@ -98,49 +99,85 @@ const Gallery = () => {
       id: 5, 
       category: 'specialty', 
       name: 'Virgin de Guadalupe Cookie',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      image: '/lovable-uploads/c31faf76-5813-4cc9-983a-b41f74069444.png'
     },
     { 
       id: 6, 
       category: 'macarons', 
       name: 'Fall Themed Macaron Box',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      image: '/lovable-uploads/d0a3e609-125b-4eaf-9320-f2c1d714be3f.png'
     },
     { 
       id: 7, 
       category: 'specialty', 
       name: 'Halloween Themed Macarons',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      image: '/lovable-uploads/32888fb0-a872-4c77-ab62-b234a344093e.png'
     },
     { 
       id: 8, 
       category: 'specialty', 
-      name: 'Valentine Dessert Collection',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      name: 'Valentine\'s Ghost Macarons',
+      image: '/lovable-uploads/c66990b2-23cb-494c-9165-6f5b2eb93430.png'
     },
     { 
       id: 9, 
       category: 'macarons', 
       name: 'Hello Kitty Macaron Tower',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      image: '/lovable-uploads/7f682eba-5b32-45c0-b949-9f31afb294ba.png'
     },
     { 
       id: 10, 
       category: 'macarons', 
       name: 'Classic Macaron Tower',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      image: '/lovable-uploads/3a54acb7-4bff-44cd-8ae4-da8453219bc8.png'
     },
     { 
       id: 11, 
       category: 'macarons', 
       name: 'Colorful Macaron Varieties',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      image: '/lovable-uploads/b56fc1b3-2c63-4da9-9c0f-cbbe8be25f7d.png'
     },
     { 
       id: 12, 
       category: 'macarons', 
-      name: 'Ghost and Special Occasion Macarons',
-      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
+      name: 'Rainbow Macarons',
+      image: '/lovable-uploads/9443baa8-68df-4351-8641-14bfb03dbe75.png'
+    },
+    { 
+      id: 13, 
+      category: 'macarons', 
+      name: 'Mini Macaron Collection',
+      image: '/lovable-uploads/00c3bad6-590c-4425-acac-9b1c9bda2eb0.png'
+    },
+    { 
+      id: 14, 
+      category: 'macarons', 
+      name: 'PhD Graduation Celebration Tower',
+      image: '/lovable-uploads/95586930-016e-4424-b143-2538dd27a10e.png'
+    },
+    { 
+      id: 15, 
+      category: 'specialty', 
+      name: 'Harry Potter Character Macarons',
+      image: '/lovable-uploads/4ba3c57e-e420-46f1-ba42-6de9ce019858.png'
+    },
+    { 
+      id: 16, 
+      category: 'specialty', 
+      name: 'Thanksgiving Macaron Collection',
+      image: '/lovable-uploads/3a0f39ff-3acf-4fe9-a9dc-639ed99dd596.png'
+    },
+    { 
+      id: 17, 
+      category: 'specialty', 
+      name: 'Halloween Macaron Set',
+      image: '/lovable-uploads/08d78340-851e-4d3f-ab4d-2ba0a65b84fa.png'
+    },
+    { 
+      id: 18, 
+      category: 'macarons', 
+      name: 'Pastel Macaron Assortment',
+      image: '/lovable-uploads/3cac243d-66f5-4da1-9ae7-d2822ddd4fe7.png'
     },
   ];
 
