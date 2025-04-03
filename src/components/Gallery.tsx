@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -66,84 +65,82 @@ const Gallery = () => {
     { id: 'specialty', name: 'Specialty' },
   ];
 
-  // Gallery items with real images
   const galleryItems = [
     { 
       id: 1, 
       category: 'macarons', 
       name: 'Colorful Macaron Collection',
-      image: '/lovable-uploads/413295bf-42f8-4418-8d58-770ec8f9be4f.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 2, 
       category: 'macarons', 
       name: 'Disney Character Macarons',
-      image: '/lovable-uploads/367c24f8-fb3f-4b17-bf3c-732e9024f2f2.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 3, 
       category: 'cookies', 
       name: 'Cinco de Mayo Cookies',
-      image: '/lovable-uploads/ea4e4f5d-0e50-4693-b585-149f7cbaf181.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 4, 
       category: 'macarons', 
       name: 'Alice in Wonderland Macaron Tower',
-      image: '/lovable-uploads/48a52d1b-92b9-45d6-b2cc-bdeacf392d9b.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
   ];
 
-  // Extended gallery items with more dessert variety
   const extendedGalleryItems = [
     ...galleryItems,
     { 
       id: 5, 
       category: 'specialty', 
       name: 'Virgin de Guadalupe Cookie',
-      image: '/lovable-uploads/69814750-0c4b-4251-ac93-4fc265befe1c.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 6, 
       category: 'macarons', 
       name: 'Fall Themed Macaron Box',
-      image: '/lovable-uploads/632388ef-e413-4619-8214-782234b63309.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 7, 
       category: 'specialty', 
       name: 'Halloween Themed Macarons',
-      image: '/lovable-uploads/69a27dd9-b4bb-455d-aba5-7c09c7bba055.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 8, 
       category: 'specialty', 
       name: 'Valentine Dessert Collection',
-      image: '/lovable-uploads/43b3ad58-5053-4a27-8ade-9a42302528e9.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 9, 
       category: 'macarons', 
       name: 'Hello Kitty Macaron Tower',
-      image: '/lovable-uploads/33ed598c-57c7-4b26-86e0-dcc8eb512a97.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 10, 
       category: 'macarons', 
       name: 'Classic Macaron Tower',
-      image: '/lovable-uploads/2f347bd4-48cb-4d06-8a4d-d60903140257.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 11, 
       category: 'macarons', 
       name: 'Colorful Macaron Varieties',
-      image: '/lovable-uploads/61c16dee-97e2-4adb-9bb2-56dca299fb4a.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
     { 
       id: 12, 
       category: 'macarons', 
       name: 'Ghost and Special Occasion Macarons',
-      image: '/lovable-uploads/ad5bab58-33af-48fd-90d6-856380fcfbd3.png'
+      image: '/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png'
     },
   ];
 
@@ -171,7 +168,6 @@ const Gallery = () => {
           and specialty treats - each crafted with care and the finest ingredients.
         </p>
         
-        {/* Category filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map(category => (
             <button
@@ -187,7 +183,6 @@ const Gallery = () => {
           ))}
         </div>
         
-        {/* Gallery grid - small preview */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredItems.map((item, index) => (
             <div 
@@ -222,7 +217,6 @@ const Gallery = () => {
           ))}
         </div>
         
-        {/* View more button that opens the dialog */}
         <div className="text-center mt-12">
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger asChild>
@@ -241,7 +235,6 @@ const Gallery = () => {
               </DialogHeader>
               
               {isMobile ? (
-                // Mobile view - only show gallery view
                 <div className="mt-4">
                   <div className="flex flex-wrap justify-center gap-3 mb-8">
                     {categories.map(category => (
@@ -292,14 +285,12 @@ const Gallery = () => {
                   </div>
                 </div>
               ) : (
-                // Desktop view - show tabs with both gallery and carousel views
                 <Tabs defaultValue="gallery" className="mt-4">
                   <TabsList className="grid w-full grid-cols-2 mb-4">
                     <TabsTrigger value="gallery">Gallery View</TabsTrigger>
                     <TabsTrigger value="carousel">Carousel View</TabsTrigger>
                   </TabsList>
                   
-                  {/* Gallery View Tab */}
                   <TabsContent value="gallery" className="mt-4">
                     <div className="flex flex-wrap justify-center gap-3 mb-8">
                       {categories.map(category => (
@@ -350,7 +341,6 @@ const Gallery = () => {
                     </div>
                   </TabsContent>
                   
-                  {/* Carousel View Tab */}
                   <TabsContent value="carousel" className="mt-4">
                     <Carousel className="w-full max-w-md mx-auto">
                       <CarouselContent>
