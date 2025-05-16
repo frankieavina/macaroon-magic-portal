@@ -50,15 +50,6 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          <li>
-            <a 
-              href="/login"
-              className="text-macaron-pink text-sm font-medium hover:text-macaron-darkPink transition-colors duration-300"
-              aria-label="Admin login"
-            >
-              Admin
-            </a>
-          </li>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -86,15 +77,6 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-            <li>
-              <a 
-                href="/login"
-                className="block py-3 px-8 text-macaron-pink hover:bg-macaron-softPink transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Admin
-              </a>
-            </li>
           </ul>
         </div>
       )}
