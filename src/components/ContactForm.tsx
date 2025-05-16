@@ -17,7 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { RefreshCcw, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 // Define the form schema with validation
 const formSchema = z.object({
@@ -32,14 +32,8 @@ const formSchema = z.object({
 
 type ContactFormValues = z.infer<typeof formSchema>;
 
-// Time-based token to prevent spam submissions
-const generateToken = () => {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-};
-
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [captchaCode, setCaptchaCode] = useState(generateToken());
   const { toast } = useToast();
 
   // Initialize the form
@@ -53,10 +47,6 @@ const ContactForm = () => {
       consent: false,
     },
   });
-
-  const refreshCaptcha = () => {
-    setCaptchaCode(generateToken());
-  };
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
@@ -83,7 +73,6 @@ const ContactForm = () => {
       });
       
       form.reset();
-      refreshCaptcha();
     } catch (error) {
       toast({
         title: "Failed to send message",
@@ -153,26 +142,6 @@ const ContactForm = () => {
           autoComplete="off"
           {...form.register("honeypot")}
         />
-        
-        <div>
-          <div className="px-4 py-3 mb-4 border rounded-md bg-macaron-softPink/30">
-            <p className="text-sm text-macaron-charcoal">
-              Your unique code: <span className="font-bold">{captchaCode}</span>
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={refreshCaptcha}
-                className="ml-2 h-6 px-2"
-              >
-                <RefreshCcw size={14} />
-              </Button>
-            </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              This helps us prevent spam messages.
-            </p>
-          </div>
-        </div>
 
         <FormField
           control={form.control}
