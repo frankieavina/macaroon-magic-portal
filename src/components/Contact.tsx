@@ -1,5 +1,7 @@
+
 import React, { useEffect, useRef } from 'react';
-import { Home, Instagram, Facebook, Mail } from 'lucide-react';
+import { Home, Instagram, Mail } from 'lucide-react';
+import ContactForm from './ContactForm';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -42,32 +44,14 @@ const Contact = () => {
       >
         <span className="block text-center text-sm text-macaron-darkPink font-medium mb-4">GET IN TOUCH</span>
         <h2 className="section-title text-center">Connect With Us</h2>
-        <p className="section-subtitle text-center">
+        <p className="section-subtitle text-center mb-16">
           We'd love to help you find the perfect macarons for your special occasion.
-          Reach out to us on social media or send us a message to place your order.
+          Fill out the form below or reach out to us on social media.
         </p>
         
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="h-96 rounded-2xl overflow-hidden relative flex items-center justify-center bg-macaron-softPink/10">
-            <div className="text-center p-10">
-              <h3 className="text-2xl md:text-3xl font-serif font-medium text-macaron-charcoal mb-4">Follow Our Journey</h3>
-              <p className="text-macaron-charcoal/70 mb-6">
-                Follow us on Instagram to see our latest creations, behind-the-scenes moments, 
-                and get notified about special flavors and seasonal offerings.
-              </p>
-              <a 
-                href="https://www.instagram.com/themacshop209" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink transition-colors duration-300"
-              >
-                @themacshop209
-              </a>
-            </div>
-          </div>
-          
-          <div className="flex flex-col justify-center">
-            <h3 className="text-2xl md:text-3xl font-serif font-medium text-macaron-charcoal mb-8">How to Order</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="space-y-8">
+            <h3 className="text-2xl md:text-3xl font-serif font-medium text-macaron-charcoal mb-6">Contact Information</h3>
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
@@ -85,9 +69,9 @@ const Contact = () => {
                   <Mail size={18} className="text-macaron-darkPink" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-macaron-charcoal mb-1">Send a Message</h4>
+                  <h4 className="text-lg font-medium text-macaron-charcoal mb-1">Email</h4>
                   <p className="text-macaron-charcoal/70">
-                    Use the form below to inquire about orders, flavors, and pricing
+                    hello@macspatisserie.com
                   </p>
                 </div>
               </div>
@@ -106,16 +90,21 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="mt-10">
+            <div className="py-6">
               <a 
                 href="https://instagram.com/macspatisserie" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink transition-colors duration-300"
               >
-                Message Us on Instagram
+                Follow Us on Instagram
               </a>
             </div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <h3 className="text-2xl font-serif font-medium text-macaron-charcoal mb-6">Send Us a Message</h3>
+            <ContactForm />
           </div>
         </div>
       </div>
