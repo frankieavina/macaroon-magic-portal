@@ -1,7 +1,4 @@
-
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
 import { 
   Dialog, 
   DialogContent, 
@@ -31,7 +28,6 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [dialogOpen, setDialogOpen] = useState(false);
   const isMobile = useIsMobile();
-  const { isAuthenticated } = useAuth();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -441,15 +437,6 @@ const Gallery = () => {
             >
               Contact Us
             </a>
-            
-            {isAuthenticated && (
-              <Link 
-                to="/admin/gallery" 
-                className="inline-block px-8 py-3 bg-macaron-darkPink text-white font-medium rounded-md hover:bg-macaron-darkPink/90 transition-colors duration-300"
-              >
-                Manage Gallery
-              </Link>
-            )}
           </div>
         </div>
       </div>
