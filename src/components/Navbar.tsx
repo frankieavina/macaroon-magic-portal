@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram, Facebook, Mail } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,18 +39,45 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a 
-                href={link.href}
-                className="text-macaron-charcoal text-sm font-medium hover:text-macaron-pink transition-colors duration-300"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center">
+          <ul className="flex space-x-8 mr-6">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a 
+                  href={link.href}
+                  className="text-macaron-charcoal text-sm font-medium hover:text-macaron-pink transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Social Icons */}
+          <div className="flex space-x-3">
+            <a 
+              href="https://www.instagram.com/themacshop209/"
+              className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
+              aria-label="Instagram"
+            >
+              <Instagram size={18} />
+            </a>
+            <a 
+              href="https://www.facebook.com/profile.php?id=61574711577534"
+              className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
+              aria-label="Facebook"
+            >
+              <Facebook size={18} />
+            </a>
+            <a 
+              href="mailto:contact@macspatisserie.com"
+              className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
+              aria-label="Email"
+            >
+              <Mail size={18} />
+            </a>
+          </div>
+        </div>
 
         {/* Mobile Menu Button */}
         <button 
@@ -77,6 +104,31 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            
+            {/* Social Icons in Mobile Menu */}
+            <li className="flex justify-center space-x-8 py-4 border-t border-macaron-softPink mt-2">
+              <a 
+                href="https://www.instagram.com/themacshop209/"
+                className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61574711577534"
+                className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
+              </a>
+              <a 
+                href="mailto:contact@macspatisserie.com"
+                className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
+                aria-label="Email"
+              >
+                <Mail size={20} />
+              </a>
+            </li>
           </ul>
         </div>
       )}

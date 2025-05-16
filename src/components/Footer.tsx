@@ -1,5 +1,5 @@
 
-import { Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -26,6 +26,13 @@ const Footer = () => {
               aria-label="Facebook"
             >
               <Facebook size={18} className="text-macaron-charcoal" />
+            </a>
+            <a 
+              href="mailto:contact@macspatisserie.com" 
+              className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-macaron-pink transition-colors duration-300"
+              aria-label="Email"
+            >
+              <Mail size={18} className="text-macaron-charcoal" />
             </a>
           </div>
         </div>
