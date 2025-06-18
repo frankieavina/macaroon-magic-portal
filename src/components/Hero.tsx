@@ -57,7 +57,7 @@ const Hero = () => {
         <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-lg relative">
           <AspectRatio ratio={1/1} className="bg-white">
             <img 
-              src="/lovable-uploads/44f56b75-d179-4cf7-b8bc-f15cda6d6cc1.png" 
+              src="/lovable-uploads/13.jpg" 
               alt="Colorful macarons, cookies, and treats in a dessert box" 
               className="object-cover w-full h-full rounded-2xl"
             />

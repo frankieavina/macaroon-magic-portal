@@ -70,7 +70,7 @@ const Navbar = () => {
               <Facebook size={18} />
             </a>
             <a 
-              href="mailto:contact@macspatisserie.com"
+              href="mailto:themacshop209@gmail.com"
               className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
               aria-label="Email"
             >
@@ -122,7 +122,7 @@ const Navbar = () => {
                 <Facebook size={20} />
               </a>
               <a 
-                href="mailto:contact@macspatisserie.com"
+                href="mailto:themacshop209@gmail.com"
                 className="text-macaron-charcoal hover:text-macaron-pink transition-colors duration-300"
                 aria-label="Email"
               >

@@ -28,7 +28,7 @@ const Footer = () => {
               <Facebook size={18} className="text-macaron-charcoal" />
             </a>
             <a 
-              href="mailto:contact@macspatisserie.com" 
+              href="mailto:themacshop209@gmail.com" 
               className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-macaron-pink transition-colors duration-300"
               aria-label="Email"
             >

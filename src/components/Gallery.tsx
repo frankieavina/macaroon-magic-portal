@@ -23,6 +23,14 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
+// Define the gallery item interface to ensure type safety
+interface GalleryItem {
+  id: number;
+  categories: string[];
+  name: string;
+  image: string;
+}
+
 const Gallery = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -62,128 +70,296 @@ const Gallery = () => {
     { id: 'specialty', name: 'Specialty' },
   ];
 
-  const galleryItems = [
+
+  const galleryItems: GalleryItem[] = [
     { 
-      id: 1, 
-      category: 'macarons', 
-      name: 'St. Patrick\'s Day Treats',
-      image: '/lovable-uploads/8e31f798-dfe5-4590-a06e-a972459cf8a7.png'
+      id: 9,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Hello Kitty Macaron Tower',
+      image: '/lovable-uploads/10.jpg'
     },
     { 
-      id: 2, 
-      category: 'macarons', 
-      name: 'Disney Minnie Macarons',
-      image: '/lovable-uploads/705f3dbd-c803-4517-9c22-a75ffae584f2.png'
+      id: 39,  
+      categories: ['macarons', 'specialty'], 
+      name: '3rd Birthday Construction Macarons',
+      image: '/lovable-uploads/40.jpg'
     },
     { 
-      id: 3, 
-      category: 'cookies', 
-      name: 'Cinco de Mayo Cookie Collection',
-      image: '/lovable-uploads/957b48fc-00b1-40a3-bc81-c679dbfb370b.png'
+      id: 24,  
+      categories: ['macarons', 'specialty', 'cakes'], 
+      name: 'Soccer Birthday Macaron',
+      image: '/lovable-uploads/25.jpg'
     },
     { 
-      id: 4, 
-      category: 'macarons', 
-      name: 'Alice in Wonderland Tower',
-      image: '/lovable-uploads/bb9b290b-e731-47e7-ae5d-e63d65414785.png'
+      id: 14,  
+      categories: ['macarons', 'specialty'], 
+      name: 'PhD Graduation Celebration Tower',
+      image: '/lovable-uploads/15.jpg'
     },
   ];
 
-  const extendedGalleryItems = [
-    ...galleryItems,
+
+  const extendedGalleryItems: GalleryItem[] = [
     { 
-      id: 5, 
-      category: 'specialty', 
-      name: 'Virgin de Guadalupe Cookie',
-      image: '/lovable-uploads/c31faf76-5813-4cc9-983a-b41f74069444.png'
+      id: 1, 
+      categories: ['macarons', 'specialty'], 
+      name: 'St. Patrick\'s Day Treats',
+      image: '/lovable-uploads/1.jpg'
     },
     { 
-      id: 6, 
-      category: 'macarons', 
+      id: 2, 
+      categories: ['macarons', 'specialty'], 
+      name: 'Disney Minnie Macarons',
+      image: '/lovable-uploads/2.jpg'
+    },
+    { 
+      id: 3, 
+      categories: ['macarons', 'specialty'], 
+      name: 'Cinco de Mayo Cookie Collection',
+      image: '/lovable-uploads/3.jpg'
+    },
+    { 
+      id: 4, 
+      categories: ['macarons', 'specialty'], 
+      name: 'Alice in Wonderland Tower',
+      image: '/lovable-uploads/4.jpg'
+    },
+    { 
+      id: 5, 
+      categories: ['macarons', 'specialty'], 
+      name: 'Virgin de Guadalupe Cookie',
+      image: '/lovable-uploads/5.jpg'
+    },
+    { 
+      id: 6,  
+      categories: ['macarons', 'specialty'], 
       name: 'Fall Themed Macaron Box',
-      image: '/lovable-uploads/d0a3e609-125b-4eaf-9320-f2c1d714be3f.png'
+      image: '/lovable-uploads/6.jpg'
     },
     { 
       id: 7, 
-      category: 'specialty', 
+      categories: ['macarons', 'specialty'], 
       name: 'Halloween Themed Macarons',
-      image: '/lovable-uploads/32888fb0-a872-4c77-ab62-b234a344093e.png'
+      image: '/lovable-uploads/7.jpg'
     },
     { 
       id: 8, 
-      category: 'specialty', 
+      categories: ['macarons', 'specialty'], 
       name: 'Valentine\'s Ghost Macarons',
-      image: '/lovable-uploads/c66990b2-23cb-494c-9165-6f5b2eb93430.png'
+      image: '/lovable-uploads/8.jpg'
     },
     { 
-      id: 9, 
-      category: 'macarons', 
+      id: 9,  
+      categories: ['macarons', 'specialty'], 
       name: 'Hello Kitty Macaron Tower',
-      image: '/lovable-uploads/7f682eba-5b32-45c0-b949-9f31afb294ba.png'
+      image: '/lovable-uploads/10.jpg'
     },
     { 
-      id: 10, 
-      category: 'macarons', 
+      id: 10,  
+      categories: ['macarons'], 
       name: 'Classic Macaron Tower',
-      image: '/lovable-uploads/3a54acb7-4bff-44cd-8ae4-da8453219bc8.png'
+      image: '/lovable-uploads/11.jpg'
     },
     { 
-      id: 11, 
-      category: 'macarons', 
+      id: 11,  
+      categories: ['macarons'], 
       name: 'Colorful Macaron Varieties',
-      image: '/lovable-uploads/b56fc1b3-2c63-4da9-9c0f-cbbe8be25f7d.png'
+      image: '/lovable-uploads/12.jpg'
     },
     { 
-      id: 12, 
-      category: 'macarons', 
+      id: 12,  
+      categories: ['macarons'], 
       name: 'Rainbow Macarons',
-      image: '/lovable-uploads/9443baa8-68df-4351-8641-14bfb03dbe75.png'
+      image: '/lovable-uploads/13.jpg'
     },
     { 
-      id: 13, 
-      category: 'macarons', 
+      id: 13,  
+      categories: ['macarons', 'specialty'], 
       name: 'Mini Macaron Collection',
-      image: '/lovable-uploads/00c3bad6-590c-4425-acac-9b1c9bda2eb0.png'
+      image: '/lovable-uploads/14.jpg'
     },
     { 
-      id: 14, 
-      category: 'macarons', 
+      id: 14,  
+      categories: ['macarons', 'specialty'], 
       name: 'PhD Graduation Celebration Tower',
-      image: '/lovable-uploads/95586930-016e-4424-b143-2538dd27a10e.png'
+      image: '/lovable-uploads/15.jpg'
     },
     { 
-      id: 15, 
-      category: 'specialty', 
-      name: 'Harry Potter Character Macarons',
-      image: '/lovable-uploads/4ba3c57e-e420-46f1-ba42-6de9ce019858.png'
+      id: 15,  
+      categories: ['macarons'], 
+      name: 'Rice Krispies Macarons',
+      image: '/lovable-uploads/16.jpg'
     },
     { 
-      id: 16, 
-      category: 'specialty', 
-      name: 'Thanksgiving Macaron Collection',
-      image: '/lovable-uploads/3a0f39ff-3acf-4fe9-a9dc-639ed99dd596.png'
+      id: 16,  
+      categories: ['macarons'], 
+      name: 'Choclate and Vanilla',
+      image: '/lovable-uploads/17.jpg'
     },
     { 
-      id: 17, 
-      category: 'specialty', 
+      id: 17,  
+      categories: ['macarons', 'specialty'], 
       name: 'Halloween Macaron Set',
-      image: '/lovable-uploads/08d78340-851e-4d3f-ab4d-2ba0a65b84fa.png'
+      image: '/lovable-uploads/18.jpg'
     },
     { 
-      id: 18, 
-      category: 'macarons', 
-      name: 'Pastel Macaron Assortment',
-      image: '/lovable-uploads/3cac243d-66f5-4da1-9ae7-d2822ddd4fe7.png'
+      id: 18,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Mickey Halloween Macarons',
+      image: '/lovable-uploads/19.jpg'
+    },
+    { 
+      id: 19,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Thanksgiving Macarons',
+      image: '/lovable-uploads/20.jpg'
+    },
+    { 
+      id: 20,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Mickey Christmas Macarons',
+      image: '/lovable-uploads/21.jpg'
+    },
+    { 
+      id: 21,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Christmas Macarons',
+      image: '/lovable-uploads/22.jpg'
+    },
+    { 
+      id: 22,  
+      categories: ['macarons', 'specialty'], 
+      name: 'St.Pattricks Macarons',
+      image: '/lovable-uploads/23.jpg'
+    },
+    { 
+      id: 23,  
+      categories: ['macarons', 'specialty'], 
+      name: '18th Birthda Macarons',
+      image: '/lovable-uploads/24.jpg'
+    },
+    { 
+      id: 24,  
+      categories: ['macarons', 'specialty', 'cakes'], 
+      name: 'Soccer Birthday Macaron',
+      image: '/lovable-uploads/25.jpg'
+    },
+    { 
+      id: 25,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Easter Macarons',
+      image: '/lovable-uploads/26.jpg'
+    },
+    { 
+      id: 26,  
+      categories: ['macarons', 'specialty', 'cakes'], 
+      name: '18th Birthday Star Wars Macarons Cake',
+      image: '/lovable-uploads/19.jpg'
+    },
+    { 
+      id: 27,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Cat Rainbow Macarons',
+      image: '/lovable-uploads/28.jpg'
+    },
+    { 
+      id: 28,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Barbie Macarons',
+      image: '/lovable-uploads/29.jpg'
+    },
+    { 
+      id: 29,  
+      categories: ['macarons', 'specialty', 'cakes'], 
+      name: 'Choclate Cake Macarons',
+      image: '/lovable-uploads/30.jpg'
+    },
+    { 
+      id: 30,  
+      categories: ['macarons', 'specialty'], 
+      name: '40th Birthday Macarons',
+      image: '/lovable-uploads/31.jpg'
+    },
+    { 
+      id: 31,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Hello Kitty Macarons',
+      image: '/lovable-uploads/32.jpg'
+    },
+    { 
+      id: 32, 
+      categories: ['macarons', 'specialty', 'cakes', 'cookies'], 
+      name: 'Quince Setup',
+      image: '/lovable-uploads/33.jpg'
+    },
+    { 
+      id: 33,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Thanksgiving Turkey Macarons',
+      image: '/lovable-uploads/34.jpg'
+    },
+    { 
+      id: 34,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Christmas Ornament Macarons',
+      image: '/lovable-uploads/35.jpg'
+    },
+    { 
+      id: 35,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Grinch Macarons',
+      image: '/lovable-uploads/36.jpg'
+    },
+    { 
+      id: 36, 
+      categories: ['cookies', 'specialty'], 
+      name: 'Valentines Cookies',
+      image: '/lovable-uploads/37.jpg'
+    },
+    { 
+      id: 37,  
+      categories: ['macarons', 'specialty'], 
+      name: 'St. Patties Day Macarons',
+      image: '/lovable-uploads/38.jpg'
+    },
+    { 
+      id: 38,  
+      categories: ['macarons', 'specialty'], 
+      name: 'Easter Macarons',
+      image: '/lovable-uploads/39.jpg'
+    },
+    { 
+      id: 39,  
+      categories: ['macarons', 'specialty'], 
+      name: '3rd Birthday Construction Macarons',
+      image: '/lovable-uploads/40.jpg'
+    },
+    { 
+      id: 40,  
+      categories: ['cakes', 'specialty'], 
+      name: '3rd Birthday Construction Macarons',
+      image: '/lovable-uploads/41.JPG'
+    },
+    { 
+      id: 41,  
+      categories: ['cakes','cookies', 'specialty'], 
+      name: '3rd Birthday Construction Macarons',
+      image: '/lovable-uploads/42.JPG'
     },
   ];
 
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
-    : galleryItems.filter(item => item.category === activeCategory);
+    : galleryItems.filter(item => item.categories.includes(activeCategory));
 
   const filteredExtendedItems = activeCategory === 'all'
     ? extendedGalleryItems
-    : extendedGalleryItems.filter(item => item.category === activeCategory);
+    : extendedGalleryItems.filter(item => item.categories.includes(activeCategory));
+
+  // Helper function to get primary category for display
+  const getPrimaryCategory = (categories: string[]) => {
+    return categories[0];
+  };
 
   return (
     <section 
@@ -240,7 +416,7 @@ const Gallery = () => {
               </div>
               <div className="p-6">
                 <span className="text-xs uppercase text-macaron-darkPink/70 mb-2 inline-block">
-                  {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
+                  {categories.find(cat => cat.id === getPrimaryCategory(item.categories))?.name || 'Dessert'}
                 </span>
                 <h3 className="text-xl font-serif font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
                   {item.name}
@@ -307,7 +483,7 @@ const Gallery = () => {
                         </div>
                         <div className="p-3 bg-white">
                           <span className="text-xs uppercase text-macaron-darkPink/70 inline-block">
-                            {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
+                            {categories.find(cat => cat.id === getPrimaryCategory(item.categories))?.name || 'Dessert'}
                           </span>
                           <h3 className="text-md font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
                             {item.name}
@@ -363,7 +539,7 @@ const Gallery = () => {
                           </div>
                           <div className="p-3 bg-white">
                             <span className="text-xs uppercase text-macaron-darkPink/70 inline-block">
-                              {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
+                              {categories.find(cat => cat.id === getPrimaryCategory(item.categories))?.name || 'Dessert'}
                             </span>
                             <h3 className="text-md font-medium text-macaron-charcoal group-hover:text-macaron-darkPink transition-colors duration-300">
                               {item.name}
@@ -390,7 +566,7 @@ const Gallery = () => {
                                 </AspectRatio>
                                 <div className="p-4 bg-white">
                                   <span className="text-xs uppercase text-macaron-darkPink/70 mb-1 inline-block">
-                                    {categories.find(cat => cat.id === item.category)?.name || 'Dessert'}
+                                    {categories.find(cat => cat.id === getPrimaryCategory(item.categories))?.name || 'Dessert'}
                                   </span>
                                   <h3 className="text-xl font-serif font-medium text-macaron-charcoal">
                                     {item.name}
@@ -433,7 +609,7 @@ const Gallery = () => {
           <div className="flex justify-center mt-4 gap-4">
             <a 
               href="#contact" 
-              className="inline-block px-8 py-3 bg-white text-macaron-charcoal font-medium rounded-md hover:bg-macaron-cream transition-colors duration-300"
+              className="inline-block px-8 py-3 bg-macaron-pink text-macaron-charcoal font-medium rounded-md hover:bg-macaron-darkPink hover:text-white transition-colors duration-300"
             >
               Contact Us
             </a>
